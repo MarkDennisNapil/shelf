@@ -1,4 +1,5 @@
 import React from "react";
+import API from "../../../config/api";
 import '../../style/signup/signup.css';
 import userplus from '../../assets/solid/user-plus.svg';
 import axios from "axios";
@@ -26,7 +27,7 @@ class Signup extends React.Component {
     formdata.append('email', this.state.email);
     formdata.append('password', this.state.password);
     formdata.append('file', this.state.file);
-    axios.post('http://localhost:4000/user', formdata, {})
+    axios.post(`${API}/user`, formdata, {})
       .then(result => {
         alert(result.data.message);
       })

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import API from "../../../config/api";
 import '../../style/notes/note.css';
 import penIcon from '../../assets/solid/pen.svg';
 import iconSave from '../../assets/solid/floppy-disk.svg';
@@ -72,7 +73,7 @@ export default class Note extends React.Component {
     });
     const bgcolor = new FormData();
     bgcolor.append('background', this.state.background);
-    axios.put(`http://localhost:4000/note/${this.props.note._id}/background`, bgcolor, {})
+    axios.put(`${API}/note/${this.props.note._id}/background`, bgcolor, {})
     .then(response => {
       console.log(response.data.message);
     })
@@ -85,7 +86,7 @@ export default class Note extends React.Component {
     const formdata = new FormData();
     formdata.append('name', this.state.name);
     formdata.append('content', this.state.content);
-      axios.put(`http://localhost:4000/note/${this.props.note._id}`, formdata, {})
+      axios.put(`${API}/note/${this.props.note._id}`, formdata, {})
       .then(response => {
         console.log(response.data.message);
         return <APIResponseToast message={response.data.message}/>;
@@ -98,7 +99,7 @@ export default class Note extends React.Component {
     this.setState({alertwindow: <ConfirmationWindow message={"Are you sure you want to delete?"} Confirm={this.DeleteConfirmCallback} visibility={'block'}/>});
   }
   deleteNote() {
-    axios.delete(`http://localhost:4000/note/${this.props.note._id}`)
+    axios.delete(`${API}/note/${this.props.note._id}`)
     .then(response => {
       this.setState({notevisibility: 'none', alertwindow: <APIResponseToast message={response.data.message} visibility={'block'}/>});
     })

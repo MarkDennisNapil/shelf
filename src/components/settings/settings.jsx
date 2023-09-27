@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from "react";
+import API from "../../../config/api";
 import '../../style/settings/settings.css';
 import axios from "axios";
 
@@ -41,7 +43,7 @@ class Settings extends React.Component {
     e.preventDefault();
     const filedata = new FormData();
     filedata.append('file', this.state.photo);
-    axios.put(`http://localhost:4000/user/${this.props.user._id}/photo`, filedata, {})
+    axios.put(`${API}/user/${this.props.user._id}/photo`, filedata, {})
     .then(result => {
       alert(result.data.message);
       window.location.assign('/');
@@ -72,7 +74,7 @@ class Settings extends React.Component {
     const formdata = new FormData();
     formdata.append('first_name', this.state.first_name);
     formdata.append('last_name', this.state.last_name);
-    axios.put(`http://localhost:4000/user/${this.props.user._id}`, formdata, {})
+    axios.put(`${API}/user/${this.props.user._id}`, formdata, {})
     .then(result => {
       alert(result.data.message);
       window.location.assign('/');
@@ -91,7 +93,7 @@ class Settings extends React.Component {
       <div className="settings" style={{background: `${this.state.background}`, boxShadow: `${this.state.shadow}`}}>
         <div className="user-photo">
         <input type="color" name="color" value={this.state.background} onChange={this.handleColor} />
-          <img src={'http://localhost:4000/resources/' + this.props.user.photo} alt="Image" />
+          <img src={`${API}/resources/` + this.props.user.photo} alt="Image" />
         </div>
         <div className="user-name"><h1>{this.props.user.first_name + " " + this.props.user.last_name}</h1>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import API from "../../../config/api";
 import '../../style/login/login.css';
 import user from '../../assets/solid/user.svg';
 class Login extends React.Component {
@@ -18,7 +19,7 @@ class Login extends React.Component {
     const formdata = new FormData();
     formdata.append('email', this.state.email);
     formdata.append('password', this.state.password);
-    axios.post('http://localhost:4000/login', formdata, {})
+    axios.post(`${API}/login`, formdata, {})
     .then(response => {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user_id', response.data.id);

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import API from "../../../config/api";
 import '../../style/notes/new.css';
 import penIcon from '../../assets/solid/pen.svg';
 import iconSave from '../../assets/solid/floppy-disk.svg';
@@ -31,7 +32,7 @@ class NewNote extends React.Component {
   }
   Save = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:4000/note`, {
+    fetch(`${API}/note`, {
       method: 'POST',
       headers: {
         "Accept": "application/json",
