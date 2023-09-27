@@ -1,0 +1,55 @@
+.settings {
+  min-width: 280px;
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 12px;
+  box-shadow: 3px 3px rgba(0, 0, 255, 0.8);
+  transition: 0.4s ease-in-out;
+}
+.settings:hover {
+  margin: 5px;
+  box-shadow: 8px 8px rgba(0, 0, 255, 0.8);
+}
+.user-photo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.user-photo input[type=color] {
+  position: absolute;
+  top: 3%;
+  right: 1%;
+  z-index: 3;
+}
+.user-photo img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border: 3px solid blue;
+  border-radius: 50%;
+  box-shadow: 3px 3px rgba(0, 0, 255, 0.8);
+  transition: 0.4s ease-in-out;
+}
+.user-photo:hover img {
+  box-shadow: 8px 8px rgba(0, 0, 255, 0.7);
+}
+.user-name h1 {
+  font-size: 15px;
+}
+.logout button {
+  color: red;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+}
+.logout button:hover {
+  border-bottom: 3px solid rgba(0, 0, 255, 1);
+}
+.eu-text input[type=text] {
+  font-size: 15px;
+  padding: 3px;
+}
+.eu-text button, .eu-photo button {
+  color: green;
+}

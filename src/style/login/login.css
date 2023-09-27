@@ -1,0 +1,52 @@
+.login {
+  width: 320px;
+  height: auto;
+  padding: 8px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px rgba(0, 255, 0, 1);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: 0.4s ease-in-out;
+}
+.login:hover {
+  margin: 5px;
+  box-shadow: 8px 8px rgba(0, 255, 0, 1);
+}
+@media only screen and (max-width: 430px) {
+  .login {
+    width: 280px;
+  }
+}
+.login img {
+  width: 50px;
+  height: 50px;
+}
+.login input[type=email], .login input[type=password] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 2px dotted rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+.login input[type=email] {
+  background: url('../../assets/solid/envelope.svg') no-repeat; 
+  background-position: 5px 15px 5px 50px;
+  padding-left: 30px;
+}
+.login input[type=password] {
+  background: url('../../assets/solid/key.svg') no-repeat;
+  background-position: 5px 15px 5px 5px;
+  padding-left: 30px;
+}
+.login input[type=submit] {
+  width: 100%;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px;
+  background: rgba(0, 255, 0, 1);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+}
