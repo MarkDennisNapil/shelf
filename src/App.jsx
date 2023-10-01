@@ -130,11 +130,9 @@ class App extends React.Component {
     this.setState({showPopupWindow: 'none'});
   }
   PopUpWindow() {
-    const {user_id, token, popwindow} = this.state;
-    if(token === null && user_id === null) {
+    if(this.state.token === null && this.state.user_id === null) {
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
       console.log("Token & UID is null");
-      return <Login />;
     }
     else if (popwindow === 'login') {
       return <Login />;
