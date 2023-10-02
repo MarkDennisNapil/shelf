@@ -49,7 +49,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     let {user_id, token} = this.state;
-    if(user_id === 'null' && token === 'null' || !token && !user_id){
+    if(user_id === '' && token === '' || !token && !user_id){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
     }
     else{
