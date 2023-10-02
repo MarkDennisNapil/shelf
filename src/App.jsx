@@ -48,7 +48,8 @@ class App extends React.Component {
     this.FetchNotes()
   }
   componentDidMount() {
-    if(this.state.user_id === null && this.state.token === null){
+    let {user_id, token} = this.state;
+    if(user_id === 'null' && token === 'null' || !token && !user_id){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
     }
     else{
