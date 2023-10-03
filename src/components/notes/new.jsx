@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import API from "../../../config/api";
+import API from "../../config/api";
 import '../../style/notes/new.css';
 import penIcon from '../../assets/solid/pen.svg';
 import iconSave from '../../assets/solid/floppy-disk.svg';
