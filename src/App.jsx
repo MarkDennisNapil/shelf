@@ -49,7 +49,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     let {user_id, token} = this.state;
-    if(user_id === '' && token === '' || !token && !user_id){
+    if(user_id === 'null' && token === 'null' || !token && !user_id){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
     }
     else{
@@ -131,9 +131,11 @@ class App extends React.Component {
     this.setState({showPopupWindow: 'none'});
   }
   PopUpWindow() {
-    if(this.state.token === null && this.state.user_id === null) {
+    const {user_id, token, popwindow} = this.state;
+    if(token === null && user_id === null) {
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
       console.log("Token & UID is null");
+      return <Login />;
     }
     else if (popwindow === 'login') {
       return <Login />;
