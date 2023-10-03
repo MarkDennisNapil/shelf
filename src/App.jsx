@@ -7,7 +7,7 @@ import loginicon from './assets/solid/user-tie.svg';
 import signupicon from './assets/solid/user-plus.svg';
 import searchicon from './assets/solid/magnifying-glass.svg';
 import './App.css';
-import API from '../config/api';
+import API from './api';
 import Note from './components/notes/note';
 import NewNote from './components/notes/new';
 import Signup from './components/signup/signup';
