@@ -196,7 +196,7 @@ span, img, button, Button, div {
 .searchbar input[type=text] {
   border: 0;
   border-bottom: 3px solid black;
-  font-size: 12px;
+  font-size: 15px;
   padding: 5px;
   border-radius: 0;
 }
