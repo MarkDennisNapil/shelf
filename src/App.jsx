@@ -48,9 +48,7 @@ class App extends React.Component {
     this.FetchNotes()
   }
   componentDidMount() {
-    let {user_id, token} = this.state;
-    if(user_id === null && token === null){
-      alert("Not login!");
+    if(this.state.user_id === 'null' && this.state.token === 'null'){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
     }
     else{
@@ -145,16 +143,13 @@ class App extends React.Component {
       return <Signup />;
     }
     else if (popwindow === 'settings') {
-      if(user_id === '') {
+      if(user_id === null) {
         alert("Not Login");
         return <Login />;
       } else{
         return <Settings user={this.state.user} />;
     }
   }
-    else {
-      this.setState({popwindow: 'login'});
-    }
   }
   Search = (e) => {
     e.preventDefault();
@@ -166,7 +161,6 @@ class App extends React.Component {
         searchbtn: 'flex',
         searchbarvisibility: 'none'
       });
-      console.log(response.data);
     })
     .catch(error => {
       console.log(error);
