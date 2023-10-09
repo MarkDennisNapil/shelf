@@ -136,20 +136,10 @@ class App extends React.Component {
       console.log("Token & UID is null");
       return <Login />;
     }
-    else if (popwindow === 'login') {
-      return <Login />;
-    }
     else if (popwindow === 'signup') {
       return <Signup />;
     }
-    else if (popwindow === 'settings') {
-      if(user_id === null) {
-        alert("Not Login");
-        return <Login />;
-      } else{
-        return <Settings user={this.state.user} />;
-    }
-  } else {
+    else {
       return <Login />;
     }
   }
