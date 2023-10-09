@@ -50,6 +50,7 @@ class App extends React.Component {
   componentDidMount() {
     if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id') || this.state.user_id === null && this.state.token === null){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
+      alert("Login required!");
     }
     else{
       this.FetchNotes()
@@ -131,7 +132,7 @@ class App extends React.Component {
   }
   PopUpWindow() {
     const {token, user_id, popwindow} = this.state;
-    if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id') || token === null && user_id === null) {
+    if(token === null && user_id === null) {
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
       alert("Not Login!");
       return <Login />;
