@@ -48,7 +48,7 @@ class App extends React.Component {
     this.FetchNotes()
   }
   componentDidMount() {
-    if(this.state.user_id === null && this.state.token === null){
+    if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id') || this.state.user_id === null && this.state.token === null){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
     }
     else{
@@ -130,10 +130,8 @@ class App extends React.Component {
     this.setState({showPopupWindow: 'none'});
   }
   PopUpWindow() {
-    const {popwindow} = this.state;
-    const token = localStorage.getItem("token");
-    const user_id = localStorage.getItem("user_id");
-    if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id')) {
+    const {token, user_id, popwindow} = this.state;
+    if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id') || token === null && user_id === null) {
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
       alert("Not Login!");
       return <Login />;
