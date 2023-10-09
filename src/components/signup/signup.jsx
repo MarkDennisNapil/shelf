@@ -1,5 +1,5 @@
 import React from "react";
-import API from "../../config/api";
+import API from "../../api";
 import '../../style/signup/signup.css';
 import userplus from '../../assets/solid/user-plus.svg';
 import axios from "axios";
