@@ -132,14 +132,11 @@ class App extends React.Component {
   }
   PopUpWindow() {
     const {token, user_id, popwindow} = this.state;
-    if(!token && !user_id) {
-      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
-      return <Login />;
-    }
-    else if (popwindow === 'signup') {
+    if(popwindow === 'signup') {
       return <Signup />;
     }
     else {
+      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
       return <Login />;
     }
   }
