@@ -130,19 +130,6 @@ class App extends React.Component {
   closePopUp = () => {
     this.setState({showPopupWindow: 'none'});
   }
-  PopUpWindow = () => {
-    const {token, user_id, popwindow} = this.state;
-    if(token === null && user_id === null) {
-      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
-      return <Login />;
-    }
-    else if (popwindow === 'signup') {
-      return <Signup />;
-    }
-    else {
-      return <Login />;
-    }
-  }
   Search = (e) => {
     e.preventDefault();
     localStorage.setItem('keyword', this.state.keyword);
