@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import API from "../../config/api";
+import API from "../../api";
 import '../../style/settings/settings.css';
 import axios from "axios";
 
