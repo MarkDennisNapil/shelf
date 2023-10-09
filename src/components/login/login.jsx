@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import API from "../../config/api";
+import API from "../../api";
 import '../../style/login/login.css';
 import user from '../../assets/solid/user.svg';
 class Login extends React.Component {
