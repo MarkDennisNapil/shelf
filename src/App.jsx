@@ -149,7 +149,9 @@ class App extends React.Component {
       } else{
         return <Settings user={this.state.user} />;
     }
-  }
+  } else {
+      return <Login />;
+    }
   }
   Search = (e) => {
     e.preventDefault();
