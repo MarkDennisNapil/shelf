@@ -48,7 +48,7 @@ class App extends React.Component {
     this.FetchNotes()
   }
   componentDidMount() {
-    if(this.state.user_id == null && this.state.token == null){
+    if(this.state.user_id === null && this.state.token === null){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
     }
     else{
@@ -131,9 +131,9 @@ class App extends React.Component {
   }
   PopUpWindow() {
     const {user_id, token, popwindow} = this.state;
-    if(token == null && user_id == null) {
+    if(!token && !user_id) {
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
-      console.log("Token & UID is null");
+      alert("Not Login!");
       return <Login />;
     }
     else if (popwindow === 'signup') {
