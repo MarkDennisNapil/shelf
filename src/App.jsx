@@ -151,6 +151,10 @@ class App extends React.Component {
         return <Settings user={this.state.user} />;
     }
   }
+     else {
+      this.setState({popwindow: 'login'});
+    }
+  }
   }
   Search = (e) => {
     e.preventDefault();
