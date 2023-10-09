@@ -130,8 +130,10 @@ class App extends React.Component {
     this.setState({showPopupWindow: 'none'});
   }
   PopUpWindow() {
-    const {user_id, token, popwindow} = this.state;
-    if(!token && !user_id) {
+    const {popwindow} = this.state;
+    const token = localStorage.getItem("token");
+    const user_id = localStorage.getItem("user_id");
+    if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id')) {
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
       alert("Not Login!");
       return <Login />;
