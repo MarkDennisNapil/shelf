@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import React from 'react';
 import plus from './assets/solid/plus.svg';
 import gear from './assets/solid/gear.svg';
@@ -50,7 +51,6 @@ class App extends React.Component {
   componentDidMount() {
     if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id') || this.state.user_id === null && this.state.token === null){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
-      alert("Login required!");
     }
     else{
       this.FetchNotes()
@@ -131,14 +131,26 @@ class App extends React.Component {
     this.setState({showPopupWindow: 'none'});
   }
   PopUpWindow() {
-    const {token, user_id, popwindow} = this.state;
-    if(popwindow === 'signup') {
-      return <Signup />;
-    }
-    else {
+    const {user_id, token, popwindow} = this.state;
+    if(token === null && user_id === null) {
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
+      console.log("Token & UID is null");
       return <Login />;
     }
+    else if (popwindow === 'login') {
+      return <Login />;
+    }
+    else if (popwindow === 'signup') {
+      return <Signup />;
+    }
+    else if (popwindow === 'settings') {
+      if(user_id === null) {
+        alert("Not Login");
+        return <Login />;
+      } else{
+        return <Settings user={this.state.user} />;
+    }
+  }
   }
   Search = (e) => {
     e.preventDefault();
