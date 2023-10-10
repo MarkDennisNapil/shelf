@@ -8,7 +8,7 @@ import loginicon from './assets/solid/user-tie.svg';
 import signupicon from './assets/solid/user-plus.svg';
 import searchicon from './assets/solid/magnifying-glass.svg';
 import './App.css';
-import api from './api'
+import API from './api'
 import Note from './components/notes/note';
 import NewNote from './components/notes/new';
 import Signup from './components/signup/signup';
@@ -59,7 +59,7 @@ class App extends React.Component {
     }
   }
   FetchNotes = () => {
-    fetch(`http://localhost:4000/user/${this.state.user_id}/notes`, {
+    fetch(`${API}user/${this.state.user_id}/notes`, {
       method: 'GET', 
       headers: {
         "Accept": "application/json",
@@ -158,7 +158,7 @@ class App extends React.Component {
   Search = (e) => {
     e.preventDefault();
     localStorage.setItem('keyword', this.state.keyword);
-    axios.get(`${api}note/user/${this.state.user_id}/search/${this.state.keyword}`)
+    axios.get(`${API}note/user/${this.state.user_id}/search/${this.state.keyword}`)
     .then(response => {
       this.setState({
         notes: response.data,
