@@ -49,13 +49,15 @@ class App extends React.Component {
     this.FetchNotes()
   }
   componentDidMount() {
-    if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id') || this.state.user_id === null && this.state.token === null){
-      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
-    }
-    else{
+    const token = localStorage.getItem('token');
+    if(token !== 'null'){
+      this.setState({popwindow: 'settings', loginbtn: 'none', signupbtn: 'none'});
       this.FetchNotes()
       this.UserData()
-      this.setState({loginbtn: 'none', signupbtn: 'none'});
+    }
+    else{
+      alert("Login required!");
+      return <Login />;
     }
   }
   FetchNotes = () => {
@@ -131,28 +133,18 @@ class App extends React.Component {
     this.setState({showPopupWindow: 'none'});
   }
   PopUpWindow() {
-    const {user_id, token, popwindow} = this.state;
-    if(token === null && user_id === null) {
-      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
-      console.log("Token & UID is null");
-      return <Login />;
-    }
-    else if (popwindow === 'login') {
+    const {popwindow} = this.state;
+    if (popwindow === 'login') {
       return <Login />;
     }
     else if (popwindow === 'signup') {
       return <Signup />;
     }
     else if (popwindow === 'settings') {
-      if(user_id === '') {
-        alert("Not Login");
-        return <Login />;
-      } else{
-        return <Settings user={this.state.user} />;
-    }
+      return <Settings user={this.state.user} />;
   }
     else {
-      this.setState({popwindow: 'login'});
+      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
     }
   }
   Search = (e) => {
