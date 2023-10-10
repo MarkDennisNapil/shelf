@@ -1,18 +1,25 @@
-FROM node:18-alpine as BUILD_IMAGE
-WORKDIR /app/react-app
+FROM node:18 as build 
 
-COPY package.json .
-COPY vite.config.js
 
-RUN npm install
+WORKDIR /react-app
+
+
+COPY package*.json .
+
+
+RUN yarn install
+
 
 COPY . .
 
-RUN npm run build
 
-FROM node:18-alpine as PRODUCTION_IMAGE
-WORKDIR /app/react-app
-COPY --from=BUILD_IMAGE /app/react-app/dist/ /app/react-app/dist/
-EXPOSE 8080
-CMD ["npm", "run", "preview"]
+RUN yarn run build
 
+
+FROM nginx:1.19
+
+
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+
+
+COPY --from=build /react-app/build /usr/share/nginx/html
