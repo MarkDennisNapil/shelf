@@ -51,7 +51,7 @@ class App extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem('token');
     const uid = localStorage.getItem('user_id');
-    if(token !== 'null' && uid !== 'null' || localStorage.getItem('token') !== null && localStorage.getItem('user_id') !== null){
+    if(token !== 'null' && uid !== 'null'){
       this.setState({popwindow: 'settings', loginbtn: 'none', signupbtn: 'none'});
       this.FetchNotes()
       this.UserData()
