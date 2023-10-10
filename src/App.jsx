@@ -8,7 +8,6 @@ import loginicon from './assets/solid/user-tie.svg';
 import signupicon from './assets/solid/user-plus.svg';
 import searchicon from './assets/solid/magnifying-glass.svg';
 import './App.css';
-import API from './api';
 import Note from './components/notes/note';
 import NewNote from './components/notes/new';
 import Signup from './components/signup/signup';
@@ -49,7 +48,7 @@ class App extends React.Component {
     this.FetchNotes()
   }
   componentDidMount() {
-    if(!localStorage.hasOwnProperty('token') && !localStorage.hasOwnProperty('user_id') || this.state.user_id === null && this.state.token === null){
+    if(this.state.user_id === 'null' && this.state.token === 'null'){
       this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex', settingsvisibility: 'none', newnotebtn: 'none', searchbtn: 'none'});
     }
     else{
@@ -59,7 +58,7 @@ class App extends React.Component {
     }
   }
   FetchNotes = () => {
-    fetch(`${API}/user/${this.state.user_id}/notes`, {
+    fetch(`http://localhost:4000/user/${this.state.user_id}/notes`, {
       method: 'GET', 
       headers: {
         "Accept": "application/json",
@@ -76,7 +75,7 @@ class App extends React.Component {
       this.setState({panel: 'notes'});
   }
   UserData() {
-    fetch(`${API}/user/${this.state.user_id}`, {
+    fetch(`http://localhost:4000/user/${this.state.user_id}`, {
       method: 'GET',
       headers: {
         "Accept": "application/json",
@@ -132,35 +131,40 @@ class App extends React.Component {
   }
   PopUpWindow() {
     const {user_id, token, popwindow} = this.state;
-    if(popwindow === 'login') {
+    if(token === null && user_id === null) {
+      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
+      console.log("Token & UID is null");
+      return <Login />;
+    }
+    else if (popwindow === 'login') {
       return <Login />;
     }
     else if (popwindow === 'signup') {
       return <Signup />;
     }
     else if (popwindow === 'settings') {
-      if(user_id === null) {
+      if(user_id === '') {
         alert("Not Login");
         return <Login />;
       } else{
         return <Settings user={this.state.user} />;
     }
   }
-     else {
-      this.setState({popwindow: 'login', showPopupWindow: 'block', loginbtn: 'flex', signupbtn: 'flex'});
+    else {
+      this.setState({popwindow: 'login'});
     }
-  }
   }
   Search = (e) => {
     e.preventDefault();
     localStorage.setItem('keyword', this.state.keyword);
-    axios.get(`${API}/note/user/${this.state.user_id}/search/${this.state.keyword}`)
+    axios.get(`http://localhost:4000/note/user/${this.state.user_id}/search/${this.state.keyword}`)
     .then(response => {
       this.setState({
         notes: response.data,
         searchbtn: 'flex',
         searchbarvisibility: 'none'
       });
+      console.log(response.data);
     })
     .catch(error => {
       console.log(error);
