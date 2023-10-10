@@ -78,7 +78,7 @@ class App extends React.Component {
       this.setState({panel: 'notes'});
   }
   UserData() {
-    fetch(`${api}user/${this.state.user_id}`, {
+    fetch(`${API}user/${this.state.user_id}`, {
       method: 'GET',
       headers: {
         "Accept": "application/json",
