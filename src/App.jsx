@@ -8,6 +8,7 @@ import loginicon from './assets/solid/user-tie.svg';
 import signupicon from './assets/solid/user-plus.svg';
 import searchicon from './assets/solid/magnifying-glass.svg';
 import './App.css';
+import api from './api'
 import Note from './components/notes/note';
 import NewNote from './components/notes/new';
 import Signup from './components/signup/signup';
@@ -75,7 +76,7 @@ class App extends React.Component {
       this.setState({panel: 'notes'});
   }
   UserData() {
-    fetch(`http://localhost:4000/user/${this.state.user_id}`, {
+    fetch(`${api}user/${this.state.user_id}`, {
       method: 'GET',
       headers: {
         "Accept": "application/json",
