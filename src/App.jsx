@@ -158,7 +158,7 @@ class App extends React.Component {
   Search = (e) => {
     e.preventDefault();
     localStorage.setItem('keyword', this.state.keyword);
-    axios.get(`http://localhost:4000/note/user/${this.state.user_id}/search/${this.state.keyword}`)
+    axios.get(`${api}note/user/${this.state.user_id}/search/${this.state.keyword}`)
     .then(response => {
       this.setState({
         notes: response.data,
