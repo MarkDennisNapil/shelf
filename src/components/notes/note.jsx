@@ -62,8 +62,7 @@ export default class Note extends React.Component {
   Pen = () => {
     this.setState({ editable: true, alertwindow: <APIResponseToast message={"Hello World! Pen Mode"}/>, visibility: 'block' });
   }
-  Save = (e) => {
-    e.preventDefault();
+  Save = () => {
     const formdata = new FormData();
     formdata.append('name', this.state.name);
     formdata.append('content', this.state.content);
