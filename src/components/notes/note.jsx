@@ -77,6 +77,7 @@ export default class Note extends React.Component {
       });
   }
   Exit = () => {
+    this.Save()
     this.setState({ 
       width: '200px', 
       height: '250px', 
@@ -94,7 +95,6 @@ export default class Note extends React.Component {
     .catch(error => {
       console.log(error);
     });
-    this.Save()
   }
   Delete = () => {
     this.setState({alertwindow: <ConfirmationWindow message={"Are you sure you want to delete?"} Confirm={this.DeleteConfirmCallback} visibility={'block'}/>});
