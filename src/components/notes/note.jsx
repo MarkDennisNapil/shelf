@@ -62,6 +62,20 @@ export default class Note extends React.Component {
   Pen = () => {
     this.setState({ editable: true, alertwindow: <APIResponseToast message={"Hello World! Pen Mode"}/>, visibility: 'block' });
   }
+  Save = (e) => {
+    e.preventDefault();
+    const formdata = new FormData();
+    formdata.append('name', this.state.name);
+    formdata.append('content', this.state.content);
+      axios.put(`${API}note/${this.props.note._id}`, formdata, {})
+      .then(response => {
+        console.log(response.data.message);
+        return <APIResponseToast message={response.data.message}/>;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   Exit = () => {
     this.setState({ 
       width: '200px', 
@@ -80,20 +94,7 @@ export default class Note extends React.Component {
     .catch(error => {
       console.log(error);
     });
-  }
-  Save = (e) => {
-    e.preventDefault();
-    const formdata = new FormData();
-    formdata.append('name', this.state.name);
-    formdata.append('content', this.state.content);
-      axios.put(`${API}note/${this.props.note._id}`, formdata, {})
-      .then(response => {
-        console.log(response.data.message);
-        return <APIResponseToast message={response.data.message}/>;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.Save()
   }
   Delete = () => {
     this.setState({alertwindow: <ConfirmationWindow message={"Are you sure you want to delete?"} Confirm={this.DeleteConfirmCallback} visibility={'block'}/>});
