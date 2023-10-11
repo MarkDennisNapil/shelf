@@ -27,7 +27,7 @@ class Signup extends React.Component {
     formdata.append('email', this.state.email);
     formdata.append('password', this.state.password);
     formdata.append('file', this.state.file);
-    axios.post(`${API}/user`, formdata, {})
+    axios.post(`${API}user`, formdata, {})
       .then(result => {
         alert(result.data.message);
       })

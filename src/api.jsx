@@ -1,3 +1,3 @@
-const API = 'https://shelf-server.onrender.com';
+const API = 'https://shelf-server.onrender.com/';
 
 export default API;

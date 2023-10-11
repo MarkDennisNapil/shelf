@@ -32,7 +32,7 @@ class NewNote extends React.Component {
   }
   Save = (e) => {
     e.preventDefault();
-    fetch(`${API}/note`, {
+    fetch(`${API}note`, {
       method: 'POST',
       headers: {
         "Accept": "application/json",

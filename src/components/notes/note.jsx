@@ -73,7 +73,7 @@ export default class Note extends React.Component {
     });
     const bgcolor = new FormData();
     bgcolor.append('background', this.state.background);
-    axios.put(`${API}/note/${this.props.note._id}/background`, bgcolor, {})
+    axios.put(`${API}note/${this.props.note._id}/background`, bgcolor, {})
     .then(response => {
       console.log(response.data.message);
     })
@@ -86,7 +86,7 @@ export default class Note extends React.Component {
     const formdata = new FormData();
     formdata.append('name', this.state.name);
     formdata.append('content', this.state.content);
-      axios.put(`${API}/note/${this.props.note._id}`, formdata, {})
+      axios.put(`${API}note/${this.props.note._id}`, formdata, {})
       .then(response => {
         console.log(response.data.message);
         return <APIResponseToast message={response.data.message}/>;
@@ -99,7 +99,7 @@ export default class Note extends React.Component {
     this.setState({alertwindow: <ConfirmationWindow message={"Are you sure you want to delete?"} Confirm={this.DeleteConfirmCallback} visibility={'block'}/>});
   }
   deleteNote() {
-    axios.delete(`${API}/note/${this.props.note._id}`)
+    axios.delete(`${API}note/${this.props.note._id}`)
     .then(response => {
       this.setState({notevisibility: 'none', alertwindow: <APIResponseToast message={response.data.message} visibility={'block'}/>});
     })
