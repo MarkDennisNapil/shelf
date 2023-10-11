@@ -17,8 +17,8 @@ export default class Note extends React.Component {
     super(props);
     this.state = {
       note: [],
-      name: '',
-      content: '',
+      name: this.props.note.name,
+      content: this.props.note.content,
       background: this.props.note.background,
       previewtext: 'block',
       edittext: 'none',
@@ -68,7 +68,6 @@ export default class Note extends React.Component {
     formdata.append('content', this.state.content);
       axios.put(`${API}note/${this.props.note._id}`, formdata, {})
       .then(response => {
-        console.log(response.data.message);
         return <APIResponseToast message={response.data.message}/>;
       })
       .catch(error => {
@@ -124,8 +123,8 @@ export default class Note extends React.Component {
         </div>
         <div className="page">
           {this.Alert()}
-          <h3 style={{display: `${this.state.previewtext}`}}>{this.props.note.name}</h3>
-          <p style={{display: `${this.state.previewtext}`}}>{this.props.note.content}</p>
+          <h3 style={{display: `${this.state.previewtext}`}}>{this.state.name}</h3>
+          <p style={{display: `${this.state.previewtext}`}}>{this.state.content}</p>
           <input type="text" name="name" value={this.state.name} onChange={this.onChange} className="txtname" style={{display: `${this.state.edittext}`}} />
           <textarea name="content" value={this.state.content} onChange={this.onChange} className="txtcontent" style={{display: `${this.state.edittext}`}} />
         </div>
