@@ -49,9 +49,6 @@ export default class Note extends React.Component {
       width: '100%', 
       height: '100% auto', 
       displayOptionButtons: 'block',
-      name: this.props.note.name,
-      content: this.props.note.content,
-      background: this.props.note.background
      });
     if (this.state.editable == true) {
       this.setState({ editable: false });
