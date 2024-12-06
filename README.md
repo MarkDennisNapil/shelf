@@ -1,4 +1,4 @@
-<h1>How to  Shelf run?</h1>
+# Set up
 <ul>
 <li>Step 1: Clone the repository</li>
 <li>Step 2: Run "npm install" to install the dependencies</li>
